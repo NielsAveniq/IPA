@@ -7,7 +7,7 @@
 		<f:SimpleForm id="SimpleFormDisplay354"
 			editable="false"
 			layout="ResponsiveGridLayout"
-			title="Address"
+			title="{i18n>Customerdata}"
 			labelSpanXL="3"
 			labelSpanL="3"
 			labelSpanM="3"
@@ -22,7 +22,7 @@
 			columnsM="1"
 			singleContainerFullSize="false" >
             <f:content>
-                <core:Title id="PersonTitle" text="{i18n>Person}"/>
+            <core:Title id="PersonTitle" text="{i18n>Person}"/>
                 <Label id="lblName" text="{i18n>Name}" />
 				<Text id="nameText" text="{}" />
 				<Label id="lblMail" text="{i18n>Mail}" />
@@ -31,9 +31,8 @@
 				<Text id="phoneText" text="{}"/>
 				<Label id="lblStdCommunication" text="{i18n>StdCommunication}" />
 				<Text id="stdCommunicationText" text="{}" />
-			</f:content>
-			<f:content>
-                <core:Title id="AddressTitle" text="{i18n>Address}"/>
+
+            <core:Title id="AddressTitle" text="{i18n>Address}"/>
 				<Label id="lblCity" text="{i18n>City}" />
 				<Text id="cityText" text="{AddressInfo/City}" />
 				<Label id="lblPostalcode" text="{i18n>Postalcode}" />

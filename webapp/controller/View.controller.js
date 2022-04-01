@@ -16,6 +16,30 @@ sap.ui.define([
 			    this._showFormFragment("Display");
             },
 
+            handleEditPress : function () {
+                this._toggleButtonsAndView(true);
+            },
+
+            handleCancelPress : function () {
+                this._toggleButtonsAndView(false);
+            },
+
+            handleSavePress : function () {
+                this._toggleButtonsAndView(false);
+            },
+
+            _toggleButtonsAndView : function (bEdit) {
+                var oView = this.getView();
+    
+                // Show the appropriate action buttons
+                oView.byId("edit").setVisible(!bEdit);
+                oView.byId("save").setVisible(bEdit);
+                oView.byId("cancel").setVisible(bEdit);
+    
+                // Set the right form type
+                this._showFormFragment(bEdit ? "Change" : "Display");
+            },
+            
             _getFormFragment: function (sFragmentName) {
                 var pFormFragment = this._formFragments[sFragmentName],
                     oView = this.getView();
