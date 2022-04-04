@@ -43,7 +43,7 @@ sap.ui.define([
             handleSavePress : function () {
                 var that = this;
 
-                var oEntryAddress = {};
+                /*var oEntryAddress = {};
                 oEntryAddress.AddressInfo = {
                     City: that.getView().byId("inputCity").getValue(), 
                     PostalCode: that.getView().byId("inputPostalcode").getValue(), 
@@ -54,7 +54,7 @@ sap.ui.define([
                     TimeZone: that.getView().byId("inputTimezone").getValue(), 
                     LanguageID: that.getView().byId("inputLang").getSelectedKey()
                 };
-                
+
                 that.getView().getModel().update("/AccountAddresses(AccountID='713',AddressID='26505')", oEntryAddress, {
                     success: function(data) {
                      alert("success");
@@ -62,7 +62,36 @@ sap.ui.define([
                     error: function(e) {
                      alert("error");
                     }
-                   });
+                });*/
+                
+                /*var oNewMail = {};
+                oNewMail = {
+                    Email: that.getView().byId("inputMail").getValue()
+
+                };*/
+
+                that.getView().getModel().update("/AccountAddressDependentEmails(AccountID='713',AddressID='26505',SequenceNo='001')", oNewMail, {
+                    success: function(data) {
+                     alert("success");
+                    },
+                    error: function(e) {
+                     alert("error");
+                    }
+                });
+                
+                /*var oNewPhone = {};
+                oNewPhone = {
+                    PhoneNo: that.getView().byId("inputPhone").getValue()
+                };
+                
+                that.getView().getModel().update("/AccountAddressDependentPhones(AccountID='713',AddressID='26505',SequenceNo='001')", oNewPhone, {
+                    success: function(data) {
+                     alert("success");
+                    },
+                    error: function(e) {
+                     alert("error");
+                    }
+                });*/
 
                 that._toggleButtonsAndView(false);
                 that._toggleFields(false);

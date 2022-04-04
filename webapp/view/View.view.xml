@@ -31,16 +31,16 @@
                             title="{i18n>Customerdata}">
                             <f:content>
                                 <core:Title id="PersonTitle" text="{i18n>Person}"/>
-                                <Label id="lblFirstName" text="{i18n>FirstName}" />
-                                <Input id="inputFirstName" value="{FirstName}" required="true" editable="false"/>
-                                <Label id="lblName" text="{i18n>Name}" />
-                                <Input id="inputName" value="{LastName}" required="true" editable="false"/>
+                                <Label id="lblFirstName" text="{i18n>FirstName}" required="true"/>
+                                <Input id="inputFirstName" value="{FirstName}" editable="false"/>
+                                <Label id="lblName" text="{i18n>Name}" required="true"/>
+                                <Input id="inputName" value="{LastName}" editable="false"/>
                                 
-                                <Label id="lblMail" text="{i18n>Mail}" />
-                                <Input id="inputMail" value="{Email}" required="true" placeholder="example@mail.com" editable="false" />
+                                <Label id="lblMail" text="{i18n>Mail}" required="true"/>
+                                <Input id="inputMail" value="{Email}" placeholder="example@mail.com" editable="false" />
 
-                                <Label id="lblPhone" text="{i18n>Phone}" />
-                                <Input id="inputPhone" value="{CompletePhoneNo}" required="true" placeholder="+41 XX XXX XX XX" editable="false" />            
+                                <Label id="lblPhone" text="{i18n>Phone}"  required="true"/>
+                                <Input id="inputPhone" value="{PhoneNo}" placeholder="+41 XX XXX XX XX" editable="false" />            
 
                                 <Label id="lblStdCommunication" text="{i18n>StdCommunication}" required="true"/>
                                 <Select id="inputStdCommunication" selectedKey="{}" editable="false">
@@ -57,14 +57,14 @@
                             layout="ResponsiveGridLayout">
                             <f:content>
                                 <core:Title id="AddressTitle" text="{i18n>Address}"/>
-                                <Label id="lblCity" text="{i18n>City}" />
-                                <Input id="inputCity" value="{AddressInfo/City}" required="true" editable="false"/>
-                                <Label id="lblPostalcode" text="{i18n>Postalcode}" />
-                                <Input id="inputPostalcode" value="{AddressInfo/PostalCode}" required="true" placeholder="XXXX" editable="false" />
+                                <Label id="lblCity" text="{i18n>City}" required="true"/>
+                                <Input id="inputCity" value="{AddressInfo/City}" editable="false"/>
+                                <Label id="lblPostalcode" text="{i18n>Postalcode}" required="true" />
+                                <Input id="inputPostalcode" value="{AddressInfo/PostalCode}" placeholder="XXXX" editable="false" />
 
-                                <Label id="lblStrNr" text="{i18n>Street/Nr}" />
-                                <Input id="inputStreet" value="{AddressInfo/Street}" required="true" editable="false"/>
-                                <Input id="inputNr" value="{AddressInfo/HouseNo}" required="true" editable="false">
+                                <Label id="lblStrNr" text="{i18n>Street/Nr}" required="true"/>
+                                <Input id="inputStreet" value="{AddressInfo/Street}" editable="false"/>
+                                <Input id="inputNr" value="{AddressInfo/HouseNo}" editable="false">
                                     <layoutData>
                                         <l:GridData id="gridNr" span="XL1 L2 M2 S4" />
                                     </layoutData>
@@ -75,7 +75,7 @@
                                 <Label id="lblCountry" text="{i18n>Country}" />
                                 <Input id="inputCountry" value="{AddressInfo/CountryName}" editable="false" />
                                 
-                                <Label id="lblRegion" text="{i18n>Region}" />
+                                <Label id="lblRegion" text="{i18n>Region}" required="true"/>
                                 <Select id="inputRegion" selectedKey="{AddressInfo/Region}" editable="false">
                                     <items>
                                         <core:Item id="itemSelAG" text="{i18n>Aargau}" key="AG"/>
@@ -90,7 +90,7 @@
                                 <Label id="lblTimezone" text="{i18n>Timezone}" />
                                 <Input id="inputTimezone" value="{AddressInfo/TimeZone}" editable="false" />
                                 
-                                <Label id="lblLang" text="{i18n>Language}" />
+                                <Label id="lblLang" text="{i18n>Language}" required="true"/>
                                 <Select id="inputLang" selectedKey="{AddressInfo/LanguageID}" editable="false">
                                     <items>
                                         <core:Item id="itemSelD" text="{i18n>German}" key="D"/>
