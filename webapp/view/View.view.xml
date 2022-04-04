@@ -37,7 +37,7 @@
                                 <Input id="inputName" value="{LastName}" editable="false"/>
                                 
                                 <Label id="lblMail" text="{i18n>Mail}" required="true"/>
-                                <Input id="inputMail" value="{Email}" placeholder="example@mail.com" editable="false" />
+                                <Input id="inputMail" value="{Email}" placeholder="example@mail.com" editable="false" change="validateMail"/>
 
                                 <Label id="lblPhone" text="{i18n>Phone}"  required="true"/>
                                 <Input id="inputPhone" value="{PhoneNo}" placeholder="+41 XX XXX XX XX" editable="false" />            

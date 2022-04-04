@@ -68,7 +68,7 @@ sap.ui.define([
                 oNewMail = {
                     Email: that.getView().byId("inputMail").getValue()
 
-                };*/
+                };
 
                 that.getView().getModel().update("/AccountAddressDependentEmails(AccountID='713',AddressID='26505',SequenceNo='001')", oNewMail, {
                     success: function(data) {
@@ -77,9 +77,9 @@ sap.ui.define([
                     error: function(e) {
                      alert("error");
                     }
-                });
+                });*/
                 
-                /*var oNewPhone = {};
+                var oNewPhone = {};
                 oNewPhone = {
                     PhoneNo: that.getView().byId("inputPhone").getValue()
                 };
@@ -91,7 +91,7 @@ sap.ui.define([
                     error: function(e) {
                      alert("error");
                     }
-                });*/
+                });
 
                 that._toggleButtonsAndView(false);
                 that._toggleFields(false);
@@ -117,6 +117,15 @@ sap.ui.define([
                 oView.byId("inputNr").setEditable(bEdit);
                 oView.byId("inputRegion").setEditable(bEdit);
                 oView.byId("inputLang").setEditable(bEdit);
+            },
+
+            validateMail:function() {
+                var email = this.getView().byId("inputMail").getValue();
+                var mailregex = /^\w+[\w-+\.]*\@\w+([-\.]\w+)*\.[a-zA-Z]{2,}$/;
+                if (!mailregex.test(email)) {
+                    alert(email + " is not a valid email address");
+                    this.getView().byId("emailInput").setValueState(sap.ui.core.ValueState.Error);
+                }
             }
         });
     });
