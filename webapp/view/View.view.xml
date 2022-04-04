@@ -8,20 +8,102 @@
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
 >
     <Shell id="shell">
         <App id="app">
             <pages>
                 <Page id="page" title="{i18n>title}">
-                        <customHeader>
-			                <Bar id="headerBar">
-                                <contentRight>
-                                    <Button id="edit" text="{i18n>Edit}" press="handleEditPress" />
-                                    <Button id="save" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSavePress" />
-                                    <Button id="cancel" text="{i18n>Cancel}" visible="false" press="handleCancelPress" />
-                                </contentRight>
-                            </Bar>
-		                </customHeader>
+                    <customHeader>
+			            <Bar id="headerBar">
+                            <contentRight>
+                                <Button id="edit" text="{i18n>Edit}" press="handleEditPress" />
+                                <Button id="save" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSavePress" />
+                                <Button id="cancel" text="{i18n>Cancel}" visible="false" press="handleCancelPress" />
+                            </contentRight>
+                        </Bar>
+		            </customHeader>
+                    <!--<mvc:XMLView id="viewDisplay" visible="true" viewName="ipa.view.Display2"/>-->
+                    <VBox id="dispVbox" class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormDisplayPerson354Neu"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="{i18n>Customerdata}">
+            <f:content>
+                <core:Title id="PersonTitle" text="{i18n>Person}"/>
+                <Label id="lblFirstName" text="{i18n>FirstName}" />
+                <Input id="inputFirstName" value="{FirstName}" required="true" editable="false"/>
+                <Label id="lblName" text="{i18n>Name}" />
+				<Input id="inputName" value="{LastName}" required="true" editable="false"/>
+                
+				<Label id="lblMail" text="{i18n>Mail}" />
+				<Input id="inputMail" value="{Email}" required="true" placeholder="example@mail.com" editable="false" />
+
+				<Label id="lblPhone" text="{i18n>Phone}" />
+				<Input id="inputPhone" value="{CompletePhoneNo}" required="true" placeholder="+41 XX XXX XX XX" editable="false" />            
+
+				<Label id="lblStdCommunication" text="{i18n>StdCommunication}" required="true"/>
+                <Select id="inputStdCommunication" selectedKey="{}" editable="false">
+					<items>
+						<core:Item id="itemSelMail" text="{i18n>Mail}" key="Mail"/>
+						<core:Item id="itemSelPhone" text="{i18n>Phone}" key="Phone"/>
+					</items>
+				</Select>
+			</f:content>
+		</f:SimpleForm>
+
+        <f:SimpleForm id="SimpleFormDisplayAddress354Neu"
+			editable="false"
+			layout="ResponsiveGridLayout">
+            <f:content>
+                <core:Title id="AddressTitle" text="{i18n>Address}"/>
+				<Label id="lblCity" text="{i18n>City}" />
+				<Input id="inputCity" value="{AddressInfo/City}" required="true" editable="false"/>
+				<Label id="lblPostalcode" text="{i18n>Postalcode}" />
+				<Input id="inputPostalcode" value="{AddressInfo/PostalCode}" required="true" placeholder="XXXX" editable="false" />
+
+				<Label id="lblStrNr" text="{i18n>Street/Nr}" />
+				<Input id="inputStreet" value="{AddressInfo/Street}" required="true" editable="false"/>
+                <Input id="inputNr" value="{AddressInfo/HouseNo}" required="true" editable="false">
+					<layoutData>
+						<l:GridData id="gridNr" span="XL1 L2 M2 S4" />
+					</layoutData>
+				</Input>
+
+				<Label id="lblCountryID" text="{i18n>CountryID}" />
+				<Input id="inputCountryID" value="{AddressInfo/CountryID}" editable="false" />
+				<Label id="lblCountry" text="{i18n>Country}" />
+                <Input id="inputCountry" value="{AddressInfo/CountryName}" editable="false" />
+                
+				<Label id="lblRegion" text="{i18n>Region}" />
+                <Select id="inputRegion" selectedKey="{AddressInfo/Region}" editable="false">
+					<items>
+						<core:Item id="itemSelAG" text="{i18n>Aargau}" key="AG"/>
+						<core:Item id="itemSelBl" text="{i18n>Basel-Landschaft}" key="BL"/>
+						<core:Item id="itemSelBE" text="{i18n>Bern}" key="BE"/>
+						<core:Item id="itemSelSO" text="{i18n>Solothurn}" key="SO"/>
+						<core:Item id="itemSelLU" text="{i18n>Luzern}" key="LU"/>
+						<core:Item id="itemSelZG" text="{i18n>Zug}" key="ZG"/>
+						<core:Item id="itemSelZH" text="{i18n>Zürich}" key="ZH"/>
+					</items>
+				</Select>
+				<Label id="lblTimezone" text="{i18n>Timezone}" />
+				<Input id="inputTimezone" value="{AddressInfo/TimeZone}" editable="false" />
+                
+                <Label id="lblLang" text="{i18n>Language}" />
+				<Select id="inputLang" selectedKey="{AddressInfo/LanguageID}" editable="false">
+					<items>
+						<core:Item id="itemSelD" text="{i18n>German}" key="D"/>
+						<core:Item id="itemSelE" text="{i18n>English}" key="E"/>
+						<core:Item id="itemSelI" text="{i18n>Italian}" key="I"/>
+						<core:Item id="itemSelF" text="{i18n>French}" key="F"/>
+					</items>
+				</Select>
+                
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
                 </Page>
             </pages>
         </App>

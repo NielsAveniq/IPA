@@ -1,15 +1,18 @@
-<core:FragmentDefinition
-	xmlns="sap.m"
+<mvc:View
+    controllerName="ipa.controller.View"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form"
-	xmlns:core="sap.ui.core"
     xmlns:smartForm="sap.ui.comp.smartform"
 	xmlns:smartField="sap.ui.comp.smartfield"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	<VBox id="dispVbox" class="sapUiSmallMargin">
+<VBox id="dispVbox" class="sapUiSmallMargin">
 		<f:SimpleForm id="SimpleFormDisplayPerson354"
-			editable="true"
+			editable="false"
 			layout="ResponsiveGridLayout"
 			title="{i18n>Customerdata}">
             <f:content>
@@ -51,4 +54,4 @@
 			</f:content>
 		</f:SimpleForm>
 	</VBox>
-</core:FragmentDefinition>
+</mvc:View>

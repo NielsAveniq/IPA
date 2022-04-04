@@ -10,14 +10,17 @@
 			title="{i18n>Customerdata}">
 			<f:content>
 				<core:Title id="PersonTitleChange" text="{i18n>Person}"/>
+                <Label id="lblFirstNameChange" text="{i18n>FirstName}" required="true"/>
+				<Input id="inputFirstName" value="{FirstName}" required="true"/>
+
                 <Label id="lblNameChange" text="{i18n>Name}" required="true"/>
-				<Input id="inputName" value="{FirstName}" required="true"/>
+				<Input id="inputName" value="{LastName}" required="true"/>
 
                 <Label id="lblMailChange" text="{i18n>Mail}" required="true"/>
-				<Input id="inputMail" value="{}" required="true" placeholder="example@mail.com"/>
+				<Input id="inputMail" value="{Email}" required="true" placeholder="example@mail.com"/>
 
                 <Label id="lblPhoneChange" text="{i18n>Phone}" required="true"/>
-				<Input id="inputPhone" value="{}" required="true" placeholder="+41 XX XXX XX XX"/>
+				<Input id="inputPhone" value="{CompletePhoneNo}" required="true" placeholder="+41 XX XXX XX XX"/>
 
                 <Label id="lblStdCommunicationChange" text="{i18n>StdCommunication}" required="true"/>
 				<Select id="inputStdCommunication" selectedKey="{}" >

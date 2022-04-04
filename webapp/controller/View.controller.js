@@ -10,18 +10,19 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("ipa.controller.View", {
-            onInit: function () {
-                //Bind Data to View
-			    this.getView().bindElement("/AccountAddresses(AccountID='713',AddressID='26505')");
-                //this.getView().byId("nameText").bindElement("/Accounts('713')");
-                
-                // Set the initial form to be the display one
-                this._formFragments = {};
-			    this._showFormFragment("Display");
+            onInit: function () {},
+
+            onAfterRendering : function (){
+                //Fragment.byId("Display", "firstNameText").bindElement("/Accounts('713')");
+                this.getView().byId("SimpleFormDisplayPerson354Neu").bindElement("/Accounts('713')")
+			    this.getView().byId("SimpleFormDisplayAddress354Neu").bindElement("/AccountAddresses(AccountID='713',AddressID='26505')");
+                this.getView().byId("inputPhone").bindElement("/AccountAddressDependentPhones(AccountID='713',AddressID='26505',SequenceNo='001')");
+                this.getView().byId("inputMail").bindElement("/AccountAddressDependentEmails(AccountID='713',AddressID='26505',SequenceNo='001')");
             },
 
             handleEditPress : function () {
                 this._toggleButtonsAndView(true);
+                this._toggleFields(true);
             },
 
             handleCancelPress : function () {
@@ -32,6 +33,7 @@ sap.ui.define([
                     onClose: function (sAction) {
                         if(sAction == "OK"){
                             that._toggleButtonsAndView(false);
+                            that._toggleFields(false);
                         }else{
                         }
                     }
@@ -62,6 +64,7 @@ sap.ui.define([
                    });
 
                 that._toggleButtonsAndView(false);
+                that._toggleFields(false);
             },
 
             _toggleButtonsAndView : function (bEdit) {
@@ -71,33 +74,21 @@ sap.ui.define([
                 oView.byId("edit").setVisible(!bEdit);
                 oView.byId("save").setVisible(bEdit);
                 oView.byId("cancel").setVisible(bEdit);
-    
-                // Set the right form type
-                this._showFormFragment(bEdit ? "Change" : "Display");
-            },
-            
-            _getFormFragment: function (sFragmentName) {
-                var pFormFragment = this._formFragments[sFragmentName],
-                    oView = this.getView();
-    
-                if (!pFormFragment) {
-                    pFormFragment = Fragment.load({
-                        id: oView.getId(),
-                        name: "ipa.view." + sFragmentName
-                    });
-                    this._formFragments[sFragmentName] = pFormFragment;
-                }
-    
-                return pFormFragment;
             },
 
-            _showFormFragment : function (sFragmentName) {
-                var oPage = this.byId("page");
-    
-                oPage.removeAllContent();
-                this._getFormFragment(sFragmentName).then(function(oVBox){
-                    oPage.insertContent(oVBox);
-                });
+            _toggleFields : function (bEdit){
+                var oView = this.getView();
+                oView.byId("inputFirstName").setEditable(bEdit);
+                oView.byId("inputName").setEditable(bEdit);
+                oView.byId("inputMail").setEditable(bEdit);
+                oView.byId("inputPhone").setEditable(bEdit);
+                oView.byId("inputStdCommunication").setEditable(bEdit);
+                oView.byId("inputCity").setEditable(bEdit);
+                oView.byId("inputPostalcode").setEditable(bEdit);
+                oView.byId("inputStreet").setEditable(bEdit);
+                oView.byId("inputNr").setEditable(bEdit);
+                oView.byId("inputRegion").setEditable(bEdit);
+                oView.byId("inputLang").setEditable(bEdit);
             }
         });
     });
