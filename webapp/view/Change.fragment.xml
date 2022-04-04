@@ -4,27 +4,14 @@
 	xmlns:f="sap.ui.layout.form"
 	xmlns:core="sap.ui.core">
 	<VBox id="changeVbox" class="sapUiSmallMargin">
-		<f:SimpleForm id="SimpleFormChange354"
+		<f:SimpleForm id="SimpleFormChangePerson354"
 			editable="true"
 			layout="ResponsiveGridLayout"
-			title="{i18n>Customerdata}"
-			labelSpanXL="3"
-			labelSpanL="3"
-			labelSpanM="3"
-			labelSpanS="12"
-			adjustLabelSpan="false"
-			emptySpanXL="4"
-			emptySpanL="4"
-			emptySpanM="4"
-			emptySpanS="0"
-			columnsXL="1"
-			columnsL="1"
-			columnsM="1"
-			singleContainerFullSize="false" >
+			title="{i18n>Customerdata}">
 			<f:content>
 				<core:Title id="PersonTitleChange" text="{i18n>Person}"/>
                 <Label id="lblNameChange" text="{i18n>Name}" required="true"/>
-				<Input id="inputName" value="{}" required="true"/>
+				<Input id="inputName" value="{FirstName}" required="true"/>
 
                 <Label id="lblMailChange" text="{i18n>Mail}" required="true"/>
 				<Input id="inputMail" value="{}" required="true" placeholder="example@mail.com"/>
@@ -39,32 +26,37 @@
 						<core:Item id="itemSelPhone" text="{i18n>Phone}" key="Phone"/>
 					</items>
 				</Select>
-
-
+			</f:content>
+		</f:SimpleForm>
+        
+        <f:SimpleForm id="SimpleFormChangeAddress354"
+			editable="true"
+			layout="ResponsiveGridLayout">
+			<f:content>
                 <core:Title id="AddressTitleChange" text="{i18n>Address}"/>
 				<Label id="lblCityChange" text="{i18n>City}" required="true"/>
-				<Input id="inputCity" value="{}" required="true"/>
+				<Input id="inputCity" value="{AddressInfo/City}" required="true"/>
 
                 <Label id="lblPostalcodeChange" text="{i18n>Postalcode}" required="true"/>
-				<Input id="inputPostalcode" value="{}" required="true" placeholder="XXXX"/>
+				<Input id="inputPostalcode" value="{AddressInfo/PostalCode}" required="true" placeholder="XXXX"/>
 
 				<Label id="lblStrNrChagne" text="{i18n>Street/Nr}" required="true"/>
-				<Input id="inputStreet" value="{}" required="true">
+				<Input id="inputStreet" value="{AddressInfo/Street}" required="true">
 				</Input>
-				<Input id="inputNr" value="{}" required="true">
+				<Input id="inputNr" value="{AddressInfo/HouseNo}" required="true">
 					<layoutData>
 						<l:GridData id="gridNr" span="XL1 L2 M2 S4" />
 					</layoutData>
 				</Input>
 
 				<Label id="lblCountryIDChange" text="{i18n>CountryID}" />
-				<Input id="inputCountryID" value="{}" editable="false" />
+				<Input id="inputCountryID" value="{AddressInfo/CountryID}" editable="false" />
 
 				<Label id="lblCountryChange" text="{i18n>Country}" />
-				<Input id="inputCountry" value="{}" editable="false" />
+				<Input id="inputCountry" value="{AddressInfo/CountryName}" editable="false" />
 
                 <Label id="lblRegionChange" text="{i18n>Region}" required="true"/>
-                <Select id="inputRegion" selectedKey="{}" >
+                <Select id="inputRegion" selectedKey="{AddressInfo/Region}" >
 					<items>
 						<core:Item id="itemSelAG" text="{i18n>Aargau}" key="AG"/>
 						<core:Item id="itemSelBl" text="{i18n>Basel-Landschaft}" key="BL"/>
@@ -77,10 +69,10 @@
 				</Select>
                                 
 				<Label id="lblTimezoneChange" text="{i18n>Timezone}" />
-				<Input id="inputTimezone" value="{}" editable="false" />
+				<Input id="inputTimezone" value="{AddressInfo/TimeZone}" editable="false" />
 
                 <Label id="lblLangChange" text="{i18n>Language}" required="true"/>
-				<Select id="inputLang" selectedKey="{}" >
+				<Select id="inputLang" selectedKey="{AddressInfo/LanguageID}" >
 					<items>
 						<core:Item id="itemSelD" text="{i18n>German}" key="D"/>
 						<core:Item id="itemSelE" text="{i18n>English}" key="E"/>

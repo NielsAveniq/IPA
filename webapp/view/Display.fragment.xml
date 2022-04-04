@@ -2,37 +2,34 @@
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
-	xmlns:core="sap.ui.core">
+	xmlns:core="sap.ui.core"
+    xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<VBox id="dispVbox" class="sapUiSmallMargin">
-		<f:SimpleForm id="SimpleFormDisplay354"
+		<f:SimpleForm id="SimpleFormDisplayPerson354"
 			editable="false"
 			layout="ResponsiveGridLayout"
-			title="{i18n>Customerdata}"
-			labelSpanXL="3"
-			labelSpanL="3"
-			labelSpanM="3"
-			labelSpanS="12"
-			adjustLabelSpan="false"
-			emptySpanXL="4"
-			emptySpanL="4"
-			emptySpanM="4"
-			emptySpanS="0"
-			columnsXL="1"
-			columnsL="1"
-			columnsM="1"
-			singleContainerFullSize="false" >
+			title="{i18n>Customerdata}">
             <f:content>
-            <core:Title id="PersonTitle" text="{i18n>Person}"/>
+                <core:Title id="PersonTitle" text="{i18n>Person}"/>
                 <Label id="lblName" text="{i18n>Name}" />
-				<Text id="nameText" text="{}" />
+				<Text id="nameText" text="{FirstName}" />
 				<Label id="lblMail" text="{i18n>Mail}" />
 				<Text id="mailText" text="{}" />
 				<Label id="lblPhone" text="{i18n>Phone}" />
 				<Text id="phoneText" text="{}"/>
 				<Label id="lblStdCommunication" text="{i18n>StdCommunication}" />
 				<Text id="stdCommunicationText" text="{}" />
+			</f:content>
+		</f:SimpleForm>
 
-            <core:Title id="AddressTitle" text="{i18n>Address}"/>
+        <f:SimpleForm id="SimpleFormDisplayAddress354"
+			editable="false"
+			layout="ResponsiveGridLayout">
+            <f:content>
+                <core:Title id="AddressTitle" text="{i18n>Address}"/>
 				<Label id="lblCity" text="{i18n>City}" />
 				<Text id="cityText" text="{AddressInfo/City}" />
 				<Label id="lblPostalcode" text="{i18n>Postalcode}" />

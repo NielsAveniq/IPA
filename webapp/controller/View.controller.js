@@ -10,7 +10,10 @@ sap.ui.define([
 
         return Controller.extend("ipa.controller.View", {
             onInit: function () {
-
+                //Bind Data to View
+			    this.getView().bindElement("/AccountAddresses(AccountID='713',AddressID='26505')");
+                //this.getView().byId("nameText").bindElement("/Accounts('713')");
+                
                 // Set the initial form to be the display one
                 this._formFragments = {};
 			    this._showFormFragment("Display");
@@ -21,11 +24,43 @@ sap.ui.define([
             },
 
             handleCancelPress : function () {
-                this._toggleButtonsAndView(false);
+                var that = this;
+                MessageBox.warning("Ihre Änderungen gehen verloren wollen Sie trotzdem weiterfahren?", {
+                    actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+                    emphasizedAction: MessageBox.Action.OK,
+                    onClose: function (sAction) {
+                        if(sAction == "OK"){
+                            that._toggleButtonsAndView(false);
+                        }else{
+                        }
+                    }
+                });
             },
 
             handleSavePress : function () {
-                this._toggleButtonsAndView(false);
+                var that = this;
+                var oEntry = {};
+                oEntry.AddressInfo = {
+                    City: that.getView().byId("inputCity").getValue(), 
+                    PostalCode: that.getView().byId("inputPostalcode").getValue(), 
+                    Street: that.getView().byId("inputStreet").getValue(), 
+                    HouseNo: that.getView().byId("inputNr").getValue(), 
+                    CountryID: that.getView().byId("inputCountryID").getValue(), 
+                    Region: that.getView().byId("inputRegion").getSelectedKey(),
+                    TimeZone: that.getView().byId("inputTimezone").getValue(), 
+                    LanguageID: that.getView().byId("inputLang").getSelectedKey()
+                };
+                
+                that.getView().getModel().update("/AccountAddresses(AccountID='713',AddressID='26505')", oEntry, {
+                    success: function(data) {
+                     alert("success");
+                    },
+                    error: function(e) {
+                     alert("error");
+                    }
+                   });
+
+                that._toggleButtonsAndView(false);
             },
 
             _toggleButtonsAndView : function (bEdit) {
