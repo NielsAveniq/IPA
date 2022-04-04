@@ -22,7 +22,72 @@
 			columnsM="1"
 			singleContainerFullSize="false" >
 			<f:content>
-				
+				<core:Title id="PersonTitleChange" text="{i18n>Person}"/>
+                <Label id="lblNameChange" text="{i18n>Name}" required="true"/>
+				<Input id="inputName" value="{}" required="true"/>
+
+                <Label id="lblMailChange" text="{i18n>Mail}" required="true"/>
+				<Input id="inputMail" value="{}" required="true" placeholder="example@mail.com"/>
+
+                <Label id="lblPhoneChange" text="{i18n>Phone}" required="true"/>
+				<Input id="inputPhone" value="{}" required="true" placeholder="+41 XX XXX XX XX"/>
+
+                <Label id="lblStdCommunicationChange" text="{i18n>StdCommunication}" required="true"/>
+				<Select id="inputStdCommunication" selectedKey="{}" >
+					<items>
+						<core:Item id="itemSelMail" text="{i18n>Mail}" key="Mail"/>
+						<core:Item id="itemSelPhone" text="{i18n>Phone}" key="Phone"/>
+					</items>
+				</Select>
+
+
+                <core:Title id="AddressTitleChange" text="{i18n>Address}"/>
+				<Label id="lblCityChange" text="{i18n>City}" required="true"/>
+				<Input id="inputCity" value="{}" required="true"/>
+
+                <Label id="lblPostalcodeChange" text="{i18n>Postalcode}" required="true"/>
+				<Input id="inputPostalcode" value="{}" required="true" placeholder="XXXX"/>
+
+				<Label id="lblStrNrChagne" text="{i18n>Street/Nr}" required="true"/>
+				<Input id="inputStreet" value="{}" required="true">
+				</Input>
+				<Input id="inputNr" value="{}" required="true">
+					<layoutData>
+						<l:GridData id="gridNr" span="XL1 L2 M2 S4" />
+					</layoutData>
+				</Input>
+
+				<Label id="lblCountryIDChange" text="{i18n>CountryID}" />
+				<Input id="inputCountryID" value="{}" editable="false" />
+
+				<Label id="lblCountryChange" text="{i18n>Country}" />
+				<Input id="inputCountry" value="{}" editable="false" />
+
+                <Label id="lblRegionChange" text="{i18n>Region}" required="true"/>
+                <Select id="inputRegion" selectedKey="{}" >
+					<items>
+						<core:Item id="itemSelAG" text="{i18n>Aargau}" key="AG"/>
+						<core:Item id="itemSelBl" text="{i18n>Basel-Landschaft}" key="BL"/>
+						<core:Item id="itemSelBE" text="{i18n>Bern}" key="BE"/>
+						<core:Item id="itemSelSO" text="{i18n>Solothurn}" key="SO"/>
+						<core:Item id="itemSelLU" text="{i18n>Luzern}" key="LU"/>
+						<core:Item id="itemSelZG" text="{i18n>Zug}" key="ZG"/>
+						<core:Item id="itemSelZH" text="{i18n>Zürich}" key="ZH"/>
+					</items>
+				</Select>
+                                
+				<Label id="lblTimezoneChange" text="{i18n>Timezone}" />
+				<Input id="inputTimezone" value="{}" editable="false" />
+
+                <Label id="lblLangChange" text="{i18n>Language}" required="true"/>
+				<Select id="inputLang" selectedKey="{}" >
+					<items>
+						<core:Item id="itemSelD" text="{i18n>German}" key="D"/>
+						<core:Item id="itemSelE" text="{i18n>English}" key="E"/>
+						<core:Item id="itemSelI" text="{i18n>Italian}" key="I"/>
+						<core:Item id="itemSelF" text="{i18n>French}" key="F"/>
+					</items>
+				</Select>
 			</f:content>
 		</f:SimpleForm>
 	</VBox>
