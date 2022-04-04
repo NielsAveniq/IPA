@@ -13,7 +13,7 @@ sap.ui.define([
             onInit: function () {},
 
             onAfterRendering : function (){
-                //Fragment.byId("Display", "firstNameText").bindElement("/Accounts('713')");
+                //Databinding to the View
                 this.getView().byId("SimpleFormDisplayPerson354Neu").bindElement("/Accounts('713')")
 			    this.getView().byId("SimpleFormDisplayAddress354Neu").bindElement("/AccountAddresses(AccountID='713',AddressID='26505')");
                 this.getView().byId("inputPhone").bindElement("/AccountAddressDependentPhones(AccountID='713',AddressID='26505',SequenceNo='001')");
@@ -42,8 +42,9 @@ sap.ui.define([
 
             handleSavePress : function () {
                 var that = this;
-                var oEntry = {};
-                oEntry.AddressInfo = {
+
+                var oEntryAddress = {};
+                oEntryAddress.AddressInfo = {
                     City: that.getView().byId("inputCity").getValue(), 
                     PostalCode: that.getView().byId("inputPostalcode").getValue(), 
                     Street: that.getView().byId("inputStreet").getValue(), 
@@ -54,7 +55,7 @@ sap.ui.define([
                     LanguageID: that.getView().byId("inputLang").getSelectedKey()
                 };
                 
-                that.getView().getModel().update("/AccountAddresses(AccountID='713',AddressID='26505')", oEntry, {
+                that.getView().getModel().update("/AccountAddresses(AccountID='713',AddressID='26505')", oEntryAddress, {
                     success: function(data) {
                      alert("success");
                     },
@@ -78,8 +79,6 @@ sap.ui.define([
 
             _toggleFields : function (bEdit){
                 var oView = this.getView();
-                oView.byId("inputFirstName").setEditable(bEdit);
-                oView.byId("inputName").setEditable(bEdit);
                 oView.byId("inputMail").setEditable(bEdit);
                 oView.byId("inputPhone").setEditable(bEdit);
                 oView.byId("inputStdCommunication").setEditable(bEdit);
