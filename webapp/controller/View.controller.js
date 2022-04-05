@@ -13,7 +13,7 @@ sap.ui.define([
             onInit: function () {},
 
             onAfterRendering : function (){
-                //Databinding to the View
+                //Databinding to the View by getting the ID from the Fields where the Entitysets are needed
                 this.getView().byId("SimpleFormDisplayPerson354").bindElement("/Accounts('713')")
 			    this.getView().byId("SimpleFormDisplayAddress354").bindElement("/AccountAddresses(AccountID='713',AddressID='26505')");
                 this.getView().byId("inputPhone").bindElement("/AccountAddressDependentPhones(AccountID='713',AddressID='26505',SequenceNo='001')");
@@ -21,7 +21,7 @@ sap.ui.define([
             },
 
 
-//////////////////////////////////////////////////////////////////////Mail
+//Edit and Save button for the Mail. And toggle of Mail Buttons and Fields
             handleEditMailPress : function () {
                 this.toggleButtonsMail(true);
                 this.toggleFieldsMail(true);
@@ -38,15 +38,11 @@ sap.ui.define([
 
                 that.getView().getModel().update("/AccountAddressDependentEmails(AccountID='713',AddressID='26505',SequenceNo='001')", oNewMail, {
                     success: function(data) {
-                     alert("success");
-                    },
-                    error: function(e) {
-                        alert("error");
+                        alert("success");
+                        that.toggleButtonsMail(false);
+                        that.toggleFieldsMail(false);
                     }
                 });
-
-                that.toggleButtonsMail(false);
-                that.toggleFieldsMail(false);
             },
 
             toggleButtonsMail : function (bEdit) {
@@ -66,7 +62,7 @@ sap.ui.define([
                 oView.byId("inputStdCommunication").setEditable(bEdit);
             },
 
-//////////////////////////////////////////////////////////////////////Phone
+//Edit and Save button for the Phonenumber. And toggle of Phonenumber Buttons and Fields
             handleEditPhonePress : function () {
                 this.toggleButtonsPhone(true);
                 this.toggleFieldsPhone(true);
@@ -82,15 +78,11 @@ sap.ui.define([
                 
                 that.getView().getModel().update("/AccountAddressDependentPhones(AccountID='713',AddressID='26505',SequenceNo='001')", oNewPhone, {
                     success: function(data) {
-                     alert("success");
-                    },
-                    error: function(e) {
-                        alert("error");
+                        alert("success");
+                        that.toggleButtonsPhone(false);
+                        that.toggleFieldsPhone(false);
                     }
                 });
-
-                that.toggleButtonsPhone(false);
-                that.toggleFieldsPhone(false);
             },
 
             toggleButtonsPhone : function (bEdit) {
@@ -110,7 +102,7 @@ sap.ui.define([
                 oView.byId("inputStdCommunication").setEditable(bEdit);
             },
 
-//////////////////////////////////////////////////////////////////////Address
+//Edit and Save button for the Address. And toggle of Address Buttons and Fields
             handleEditAddressPress : function () {
                 this.toggleButtonsAddress(true);
                 this.toggleFieldsAddress(true);
@@ -133,30 +125,16 @@ sap.ui.define([
 
                 that.getView().getModel().update("/AccountAddresses(AccountID='713',AddressID='26505')", oEntryAddress, {
                     success: function(data) {
-                     alert("success");
+                        alert("success");
+                        that.toggleButtonsAddress(false);
+                        that.toggleFieldsAddress(false);
                     },
                     error: function(e) {
-                     alert("error");
+                        alert("error");
                     }
                 });
 
-                that.toggleButtonsAddress(false);
-                that.toggleFieldsAddress(false);
-            },
-
-            handleCancelPress : function () {
-                var that = this;
-                MessageBox.warning("Ihre Änderungen gehen verloren wollen Sie trotzdem weiterfahren?", {
-                    actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
-                    emphasizedAction: MessageBox.Action.OK,
-                    onClose: function (sAction) {
-                        if(sAction == "OK"){
-                            that.toggleButtons(false);
-                            that.toggleFields(false);
-                        }else{
-                        }
-                    }
-                });
+                
             },
 
             toggleButtonsAddress : function (bEdit) {
@@ -180,7 +158,21 @@ sap.ui.define([
                 oView.byId("inputLang").setEditable(bEdit);
             },
 
-//////////////////////////////////////////////////////////////////////Toggle Buttons and Fields
+//Cancel button and toggle of buttons and fields when using the cancel button
+            handleCancelPress : function () {
+                var that = this;
+                MessageBox.warning("Ihre Änderungen gehen verloren wollen Sie trotzdem weiterfahren?", {
+                    actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+                    emphasizedAction: MessageBox.Action.OK,
+                    onClose: function (sAction) {
+                        if(sAction == "OK"){
+                            that.toggleButtons(false);
+                            that.toggleFields(false);
+                        }else{
+                        }
+                    }
+                });
+            },
             toggleButtons : function (bEdit) {
                 var oView = this.getView();
     
@@ -207,7 +199,8 @@ sap.ui.define([
                 oView.byId("inputLang").setEditable(bEdit);
             },
 
-///////////////////////////////////////////////////////////////////////////////////////////Vaildate Inputs
+
+//Vaildate the Input from the Mail Source:https://answers.sap.com/questions/11914737/email-validation-of-a-simple-form.html
             validateMail : function() {
                 var email = this.getView().byId("inputMail").getValue();
                 var mailregex = /^\w+[\w-+\.]*\@\w+([-\.]\w+)*\.[a-zA-Z]{2,}$/;
@@ -217,6 +210,7 @@ sap.ui.define([
                 }
             },
 
+//Validate the Input from the Phonenumber Sorurce:https://www.w3resource.com/javascript/form/phone-no-validation.php
             validatePhone : function(){
                 var phoneno = this.getView().byId("inputPhone").getValue();
                 var phonenoregex = /^\d{10}$/;
