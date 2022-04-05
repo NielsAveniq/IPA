@@ -18,7 +18,7 @@
                     <customHeader>
 			            <Bar id="headerBar">
                             <contentRight>
-                                <Button id="cancel" text="{i18n>Cancel}" visible="false" press="handleCancelPress" />
+                                <Button id="cancel" text="{i18n>Cancel}" enabled="false" press="handleCancelPress" />
                             </contentRight>
                         </Bar>
 		            </customHeader>
@@ -41,7 +41,7 @@
                                 <Input id="inputPhone" value="{PhoneNo}" placeholder="XXX XXX XX XX" editable="false" change="validatePhone"/>   
 
                                 <Label id="lblStdCommunication" text="{i18n>StdCommunication}" required="true"/>
-                                <Select id="inputStdCommunication" selectedKey="{}" editable="false">
+                                <Select id="inputStdCommunication" selectedKey="{CommunicationPreference}" editable="false">
                                     <items>
                                         <core:Item id="itemSelMail" text="{i18n>Mail}" key="Mail"/>
                                         <core:Item id="itemSelPhone" text="{i18n>Phone}" key="Phone"/>

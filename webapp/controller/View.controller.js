@@ -55,7 +55,7 @@ sap.ui.define([
                 oView.byId("editPhone").setVisible(!bEdit);
                 oView.byId("editAddress").setVisible(!bEdit);
                 oView.byId("saveMail").setVisible(bEdit);
-                oView.byId("cancel").setVisible(bEdit);
+                oView.byId("cancel").setEnabled(bEdit);
             },
 
             //Changes the mail and standard-Communicationchannel fields from "not editable" to "editable" and the other way around
@@ -98,7 +98,7 @@ sap.ui.define([
                 oView.byId("editPhone").setVisible(!bEdit);
                 oView.byId("editAddress").setVisible(!bEdit);
                 oView.byId("savePhone").setVisible(bEdit);
-                oView.byId("cancel").setVisible(bEdit);
+                oView.byId("cancel").setEnabled(bEdit);
             },
 
             //Changes the phone and standard-Communicationchannel fields from "not editable" to "editable" and the other way around
@@ -153,7 +153,7 @@ sap.ui.define([
                 oView.byId("editPhone").setVisible(!bEdit);
                 oView.byId("editAddress").setVisible(!bEdit);
                 oView.byId("saveAddress").setVisible(bEdit);
-                oView.byId("cancel").setVisible(bEdit);
+                oView.byId("cancel").setEnabled(bEdit);
             },
 
             //Changes the phone and standard-Communicationchannel fields from "not editable" to "editable" and the other way around
@@ -193,7 +193,7 @@ sap.ui.define([
                 oView.byId("saveMail").setVisible(bEdit);
                 oView.byId("savePhone").setVisible(bEdit);
                 oView.byId("saveAddress").setVisible(bEdit);
-                oView.byId("cancel").setVisible(bEdit);
+                oView.byId("cancel").setEnabled(bEdit);
             },
 
             //Toggles the fields when canceling the editing
