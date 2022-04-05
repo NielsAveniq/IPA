@@ -29,9 +29,9 @@
                             title="{i18n>title}">
                             <f:content>
                                 <core:Title id="PersonTitle" text="{i18n>Person}"/>
-                                <Label id="lblFirstName" text="{i18n>FirstName}" required="true"/>
+                                <Label id="lblFirstName" text="{i18n>FirstName}"/>
                                 <Input id="inputFirstName" value="{FirstName}" editable="false"/>
-                                <Label id="lblName" text="{i18n>Name}" required="true"/>
+                                <Label id="lblName" text="{i18n>Name}"/>
                                 <Input id="inputName" value="{LastName}" editable="false"/>
                                 
                                 <Label id="lblMail" text="{i18n>Mail}" required="true"/>

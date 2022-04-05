@@ -63,6 +63,7 @@ sap.ui.define([
             toggleFieldsMail : function (bEdit){
                 var oView = this.getView();
                 oView.byId("inputMail").setEditable(bEdit);
+                oView.byId("inputStdCommunication").setEditable(bEdit);
             },
 
 //////////////////////////////////////////////////////////////////////Phone
@@ -106,6 +107,7 @@ sap.ui.define([
             toggleFieldsPhone : function (bEdit){
                 var oView = this.getView();
                 oView.byId("inputPhone").setEditable(bEdit);
+                oView.byId("inputStdCommunication").setEditable(bEdit);
             },
 
 //////////////////////////////////////////////////////////////////////Address
@@ -170,7 +172,6 @@ sap.ui.define([
 
             toggleFieldsAddress : function (bEdit){
                 var oView = this.getView();
-                oView.byId("inputStdCommunication").setEditable(bEdit);
                 oView.byId("inputCity").setEditable(bEdit);
                 oView.byId("inputPostalcode").setEditable(bEdit);
                 oView.byId("inputStreet").setEditable(bEdit);
