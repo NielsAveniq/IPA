@@ -65,7 +65,6 @@ sap.ui.define([
                 oView.byId("inputMail").setEditable(bEdit);
             },
 
-
 //////////////////////////////////////////////////////////////////////Phone
             handleEditPhonePress : function () {
                 this.toggleButtonsPhone(true);
