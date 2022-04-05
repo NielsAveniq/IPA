@@ -103,8 +103,8 @@
                                 </Select>
                             </f:content>
                         </f:SimpleForm>
-                                <Button id="editAddress" text="{i18n>EditAddress}" press="handleEditAddressPress" width="15%"/>
-                                <Button id="saveAddress" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSaveAddressPress" width="15%"/>
+                        <Button id="editAddress" text="{i18n>EditAddress}" press="handleEditAddressPress" width="15%"/>
+                        <Button id="saveAddress" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSaveAddressPress" width="15%"/>
                     </VBox>
                 </Page>
             </pages>
