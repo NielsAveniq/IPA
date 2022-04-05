@@ -1,12 +1,11 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/core/Fragment",
     "sap/m/MessageBox"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Fragment, MessageBox) {
+    function (Controller, MessageBox) {
         "use strict";
 
         return Controller.extend("ipa.controller.View", {
@@ -21,12 +20,10 @@ sap.ui.define([
             },
 
             /*
-            //
             //Buttons Cancel, Save and Edit
-            //
             */
 
-            //Cancel Button
+            //Cancel Button opens a MessageBox and asks user wether or not they want to exit the editing.
             handleCancelPress: function () {
                 var that = this;
                 MessageBox.warning(this.getView().getModel("i18n").getResourceBundle().getText("CancelWarning"), {
@@ -42,7 +39,13 @@ sap.ui.define([
                 });
             },
 
-            //Save Button
+            //Edit Button calls toggleFields and toggleButtons and gives the parameter true
+            handleEditPress: function () {
+                this._toggleFields(true);
+                this._toggleButtons(true);
+            },
+
+            //Save Button calls the three methods to save the data and then the two toggle methods with the parameter false
             handleSavePress: async function (oEvent) {
                 await this._saveMail();
                 await this._savePhone();
@@ -51,16 +54,8 @@ sap.ui.define([
                 this._toggleFields(false);
             },
 
-            //Edit Button
-            handleEditPress: function () {
-                this._toggleFields(true);
-                this._toggleButtons(true);
-            },
-
             /*
-            //
             //Save Mail, Phone and Address
-            //
             */
 
             _saveMail: function () {
@@ -139,11 +134,10 @@ sap.ui.define([
             },
 
             /*
-            //
             //Toggle Buttons and Fields
-            //
             */
 
+            //Depending on bEdit the buttons are enabled or disabled
             _toggleButtons: function (bEdit) {
                 var oView = this.getView();
                 oView.byId("edit").setEnabled(!bEdit);
@@ -151,6 +145,7 @@ sap.ui.define([
                 oView.byId("cancel").setEnabled(bEdit);
             },
 
+            //Depending on bEdit the fields are editable or not
             _toggleFields: function (bEdit) {
                 var oView = this.getView();
                 oView.byId("inputMail").setEditable(bEdit);
