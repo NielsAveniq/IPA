@@ -18,14 +18,12 @@
                     <customHeader>
 			            <Bar id="headerBar">
                             <contentRight>
-                                <Button id="edit" text="{i18n>Edit}" press="handleEditPress" />
-                                <Button id="save" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSavePress" />
                                 <Button id="cancel" text="{i18n>Cancel}" visible="false" press="handleCancelPress" />
                             </contentRight>
                         </Bar>
 		            </customHeader>
                     <VBox id="dispVbox" class="sapUiSmallMargin">
-                        <f:SimpleForm id="SimpleFormDisplayPerson354Neu"
+                        <f:SimpleForm id="SimpleFormDisplayPerson354"
                             editable="true"
                             layout="ResponsiveGridLayout"
                             title="{i18n>Customerdata}">
@@ -40,7 +38,7 @@
                                 <Input id="inputMail" value="{Email}" placeholder="example@mail.com" editable="false" change="validateMail"/>
 
                                 <Label id="lblPhone" text="{i18n>Phone}"  required="true"/>
-                                <Input id="inputPhone" value="{PhoneNo}" placeholder="+41 XX XXX XX XX" editable="false" />            
+                                <Input id="inputPhone" value="{PhoneNo}" placeholder="XXX XXX XX XX" editable="false" change="validatePhone"/>   
 
                                 <Label id="lblStdCommunication" text="{i18n>StdCommunication}" required="true"/>
                                 <Select id="inputStdCommunication" selectedKey="{}" editable="false">
@@ -51,8 +49,12 @@
                                 </Select>
                             </f:content>
                         </f:SimpleForm>
+                                <Button id="editMail" text="{i18n>EditMail}" press="handleEditMailPress" width="10%"/>
+                                <Button id="saveMail" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSaveMailPress" width="10%"/>
+                                <Button id="editPhone" text="{i18n>EditPhone}" press="handleEditPhonePress" width="10%"/>
+                                <Button id="savePhone" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSavePhonePress" width="10%"/>  
 
-                        <f:SimpleForm id="SimpleFormDisplayAddress354Neu"
+                        <f:SimpleForm id="SimpleFormDisplayAddress354"
                             editable="false"
                             layout="ResponsiveGridLayout">
                             <f:content>
@@ -101,6 +103,8 @@
                                 </Select>
                             </f:content>
                         </f:SimpleForm>
+                                <Button id="editAddress" text="{i18n>EditAddress}" press="handleEditAddressPress" width="10%"/>
+                                <Button id="saveAddress" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSaveAddressPress" width="10%"/>
                     </VBox>
                 </Page>
             </pages>
