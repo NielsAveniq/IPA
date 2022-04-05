@@ -13,7 +13,7 @@ sap.ui.define([
             onInit: function () {},
 
             onAfterRendering : function (){
-                //Databinding to the View by getting the ID from the Fields where the Entitysets are needed
+                //Databinding to the view by getting the ID from the fields where the entitysets are needed
                 this.getView().byId("SimpleFormDisplayPerson354").bindElement("/Accounts('713')")
 			    this.getView().byId("SimpleFormDisplayAddress354").bindElement("/AccountAddresses(AccountID='713',AddressID='26505')");
                 this.getView().byId("inputPhone").bindElement("/AccountAddressDependentPhones(AccountID='713',AddressID='26505',SequenceNo='001')");
@@ -21,12 +21,14 @@ sap.ui.define([
             },
 
 
-//Edit and Save button for the Mail. And toggle of Mail Buttons and Fields
+//Edit and save button for the mail. And toggle of buttons and fields used for the mail
+            //Pressing the edit mail button calls these methods
             handleEditMailPress : function () {
                 this.toggleButtonsMail(true);
                 this.toggleFieldsMail(true);
             },
 
+            //Pressing save first gets the value and then updates the data
             handleSaveMailPress : function () {
                 var that = this;
                 
@@ -45,10 +47,9 @@ sap.ui.define([
                 });
             },
 
+            //First all edit buttons are disabled and then the save and cancel buttons are shown
             toggleButtonsMail : function (bEdit) {
                 var oView = this.getView();
-    
-                // Show the appropriate action buttons
                 oView.byId("editMail").setVisible(!bEdit);
                 oView.byId("editPhone").setVisible(!bEdit);
                 oView.byId("editAddress").setVisible(!bEdit);
@@ -56,13 +57,15 @@ sap.ui.define([
                 oView.byId("cancel").setVisible(bEdit);
             },
 
+            //Changes the mail and standard-Communicationchannel fields from not editable to editable
             toggleFieldsMail : function (bEdit){
                 var oView = this.getView();
                 oView.byId("inputMail").setEditable(bEdit);
                 oView.byId("inputStdCommunication").setEditable(bEdit);
             },
 
-//Edit and Save button for the Phonenumber. And toggle of Phonenumber Buttons and Fields
+//Edit and save button for the phonenumber. And toggle of phonenumber buttons and fields
+            //Pressing the edit phone button calls these methods
             handleEditPhonePress : function () {
                 this.toggleButtonsPhone(true);
                 this.toggleFieldsPhone(true);
@@ -87,8 +90,6 @@ sap.ui.define([
 
             toggleButtonsPhone : function (bEdit) {
                 var oView = this.getView();
-    
-                // Show the appropriate action buttons
                 oView.byId("editMail").setVisible(!bEdit);
                 oView.byId("editPhone").setVisible(!bEdit);
                 oView.byId("editAddress").setVisible(!bEdit);
@@ -139,8 +140,6 @@ sap.ui.define([
 
             toggleButtonsAddress : function (bEdit) {
                 var oView = this.getView();
-    
-                // Show the appropriate action buttons
                 oView.byId("editMail").setVisible(!bEdit);
                 oView.byId("editPhone").setVisible(!bEdit);
                 oView.byId("editAddress").setVisible(!bEdit);
