@@ -20,60 +20,30 @@ sap.ui.define([
                 this.getView().byId("inputMail").bindElement("/AccountAddressDependentEmails(AccountID='713',AddressID='26505',SequenceNo='001')");
             },
 
-
-//Edit and save button for the mail. And toggle of buttons and fields used for the mail
-            //Pressing the edit mail button calls these methods
-            handleEditMailPress : function () {
-                this.toggleButtonsMail(true);
-                this.toggleFieldsMail(true);
-            },
-
-            //Pressing save first gets the value and then updates the data
-            handleSaveMailPress : function () {
+            _handleSaveMailPress : function () {
+                return new Promise(function (resolve){
                 var that = this;
                 
                 var oNewMail = {};
                 oNewMail = {
                     Email: that.getView().byId("inputMail").getValue()
-
                 };
 
                 that.getView().getModel().update("/AccountAddressDependentEmails(AccountID='713',AddressID='26505',SequenceNo='001')", oNewMail, {
                     success: function(data) {
                         alert("success");
-                        that.toggleButtonsMail(false);
-                        that.toggleFieldsMail(false);
-                    }
+                        resolve(true);
+                    }.bind(this),
+                    error: function (oError) {
+                        //handled by ErrorHandler.js
+                        resolve(false);
+                        }.bind(this)
                 });
+            }.bind(this));
             },
 
-            //When bEdit=true all edit buttons are disabled and then the save and cancel buttons are shown
-            //When bEdit=false the save and canel buttons are disabled and the edit buttons are shown
-            toggleButtonsMail : function (bEdit) {
-                var oView = this.getView();
-                oView.byId("editMail").setVisible(!bEdit);
-                oView.byId("editPhone").setVisible(!bEdit);
-                oView.byId("editAddress").setVisible(!bEdit);
-                oView.byId("saveMail").setVisible(bEdit);
-                oView.byId("cancel").setEnabled(bEdit);
-            },
-
-            //Changes the mail and standard-Communicationchannel fields from "not editable" to "editable" and the other way around
-            toggleFieldsMail : function (bEdit){
-                var oView = this.getView();
-                oView.byId("inputMail").setEditable(bEdit);
-                oView.byId("inputStdCommunication").setEditable(bEdit);
-            },
-
-//Edit and save button for the phonenumber. And toggle of phonenumber buttons and fields
-            //Pressing the edit phone button calls these methods
-            handleEditPhonePress : function () {
-                this.toggleButtonsPhone(true);
-                this.toggleFieldsPhone(true);
-            },
-
-            //Pressing save first gets the value and then updates the data
-            handleSavePhonePress : function () {
+            _handleSavePhonePress : function () {
+                return new Promise(function (resolve){
                 var that = this;
                 
                 var oNewPhone = {};
@@ -84,39 +54,19 @@ sap.ui.define([
                 that.getView().getModel().update("/AccountAddressDependentPhones(AccountID='713',AddressID='26505',SequenceNo='001')", oNewPhone, {
                     success: function(data) {
                         alert("success");
-                        that.toggleButtonsPhone(false);
-                        that.toggleFieldsPhone(false);
-                    }
+                        resolve(true);
+                    }.bind(this),
+                    error: function (oError) {
+                        //handled by ErrorHandler.js
+                        resolve(false);
+               }.bind(this)
+
                 });
+            }.bind(this));
             },
 
-            //When bEdit=true all phone buttons are disabled and then the save and cancel buttons are shown
-            //When bEdit=false the save and canel buttons are disabled and the edit buttons are shown
-            toggleButtonsPhone : function (bEdit) {
-                var oView = this.getView();
-                oView.byId("editMail").setVisible(!bEdit);
-                oView.byId("editPhone").setVisible(!bEdit);
-                oView.byId("editAddress").setVisible(!bEdit);
-                oView.byId("savePhone").setVisible(bEdit);
-                oView.byId("cancel").setEnabled(bEdit);
-            },
-
-            //Changes the phone and standard-Communicationchannel fields from "not editable" to "editable" and the other way around
-            toggleFieldsPhone : function (bEdit){
-                var oView = this.getView();
-                oView.byId("inputPhone").setEditable(bEdit);
-                oView.byId("inputStdCommunication").setEditable(bEdit);
-            },
-
-//Edit and save button for the address. And toggle of address buttons and fields
-            //Pressing the edit phone button calls these methods
-            handleEditAddressPress : function () {
-                this.toggleButtonsAddress(true);
-                this.toggleFieldsAddress(true);
-            },
-
-            //Pressing save first gets the value and then updates the data
-            handleSaveAddressPress : function () {
+            _handleSaveAddressPress : function () {
+                return new Promise(function (resolve){
                 var that = this;
 
                 var oEntryAddress = {};
@@ -134,70 +84,52 @@ sap.ui.define([
                 that.getView().getModel().update("/AccountAddresses(AccountID='713',AddressID='26505')", oEntryAddress, {
                     success: function(data) {
                         alert("success");
-                        that.toggleButtonsAddress(false);
-                        that.toggleFieldsAddress(false);
-                    },
-                    error: function(e) {
-                        alert("error");
-                    }
+                        resolve(true);
+                    }.bind(this),
+                    error: function (oError) {
+                        //handled by ErrorHandler.js
+                        resolve(false);
+               }.bind(this)
+
                 });
-
-                
+            }.bind(this));                
             },
-
-            //When bEdit=true all phone buttons are disabled and then the save and cancel buttons are shown
-            //When bEdit=false the save and canel buttons are disabled and the edit buttons are shown
-            toggleButtonsAddress : function (bEdit) {
-                var oView = this.getView();
-                oView.byId("editMail").setVisible(!bEdit);
-                oView.byId("editPhone").setVisible(!bEdit);
-                oView.byId("editAddress").setVisible(!bEdit);
-                oView.byId("saveAddress").setVisible(bEdit);
-                oView.byId("cancel").setEnabled(bEdit);
-            },
-
-            //Changes the phone and standard-Communicationchannel fields from "not editable" to "editable" and the other way around
-            toggleFieldsAddress : function (bEdit){
-                var oView = this.getView();
-                oView.byId("inputCity").setEditable(bEdit);
-                oView.byId("inputPostalcode").setEditable(bEdit);
-                oView.byId("inputStreet").setEditable(bEdit);
-                oView.byId("inputNr").setEditable(bEdit);
-                oView.byId("inputRegion").setEditable(bEdit);
-                oView.byId("inputLang").setEditable(bEdit);
-            },
-
-//Cancel button and toggle of buttons and fields when using the cancel button
-            //Cancel button shows a Messagebox. The user can either end the editing and lose all changes or keep on editing
+        
             handleCancelPress : function () {
                 var that = this;
-                MessageBox.warning("Ihre Änderungen gehen verloren wollen Sie trotzdem weiterfahren?", {
+                MessageBox.warning(this.getView().getModel("i18n").getResourceBundle().getText("CancelWarning"), {
                     actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
                     emphasizedAction: MessageBox.Action.OK,
                     onClose: function (sAction) {
                         if(sAction == "OK"){
-                            that.toggleButtons(false);
-                            that.toggleFields(false);
+                            that._toggleButtons(false);
+                            that._toggleFields(false);
                         }else{
                         }
                     }
                 });
             },
 
-            //Toogles the Buttens when canceling the editing
-            toggleButtons : function (bEdit) {
+            handleSavePress : async function (oEvent) {
+                await this._handleSaveAddressPress();
+                await this._handleSaveMailPress();
+                await this._handleSavePhonePress();
+                this._toggleButtons(false);
+                this._toggleFields(false);
+            },
+            handleEditPress : function(){
+                this._toggleFields(true);
+                this._toggleButtons(true);
+            },
+
+            _toggleButtons : function (bEdit) {
                 var oView = this.getView();
-                oView.byId("editMail").setVisible(!bEdit);
-                oView.byId("editPhone").setVisible(!bEdit);
-                oView.byId("editAddress").setVisible(!bEdit);
-                oView.byId("saveMail").setVisible(bEdit);
-                oView.byId("savePhone").setVisible(bEdit);
-                oView.byId("saveAddress").setVisible(bEdit);
+                oView.byId("edit").setEnabled(!bEdit);
+                oView.byId("save").setEnabled(bEdit);
                 oView.byId("cancel").setEnabled(bEdit);
             },
 
-            //Toggles the fields when canceling the editing
-            toggleFields : function (bEdit){
+            _toggleFields : function (bEdit){
                 var oView = this.getView();
                 oView.byId("inputMail").setEditable(bEdit);
                 oView.byId("inputPhone").setEditable(bEdit);
@@ -209,6 +141,7 @@ sap.ui.define([
                 oView.byId("inputRegion").setEditable(bEdit);
                 oView.byId("inputLang").setEditable(bEdit);
             },
+
 
 
 //Validate the Inputs in the Fields Mail and Phone

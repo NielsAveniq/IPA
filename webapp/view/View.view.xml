@@ -18,6 +18,8 @@
                     <customHeader>
 			            <Bar id="headerBar">
                             <contentRight>
+                                <Button id="edit" text="{i18n>Edit}" press="handleEditPress" />
+                                <Button id="save" text="{i18n>Save}" type="Emphasized" enabled="false" press="handleSavePress"/>
                                 <Button id="cancel" text="{i18n>Cancel}" enabled="false" press="handleCancelPress" />
                             </contentRight>
                         </Bar>
@@ -49,10 +51,6 @@
                                 </Select>
                             </f:content>
                         </f:SimpleForm>
-                                <Button id="editMail" text="{i18n>EditMail}" press="handleEditMailPress" width="15%"/>
-                                <Button id="saveMail" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSaveMailPress" width="15%"/>
-                                <Button id="editPhone" text="{i18n>EditPhone}" press="handleEditPhonePress" width="15%"/>
-                                <Button id="savePhone" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSavePhonePress" width="15%"/>  
 
                         <f:SimpleForm id="SimpleFormDisplayAddress354"
                             editable="false"
@@ -103,8 +101,6 @@
                                 </Select>
                             </f:content>
                         </f:SimpleForm>
-                        <Button id="editAddress" text="{i18n>EditAddress}" press="handleEditAddressPress" width="15%"/>
-                        <Button id="saveAddress" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSaveAddressPress" width="15%"/>
                     </VBox>
                 </Page>
             </pages>
