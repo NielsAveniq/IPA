@@ -125,7 +125,7 @@ sap.ui.define([
                             resolve(true);
                         }.bind(this),
                         error: function (oError) {
-                            //handled by ErrorHandler.js
+                                alert(message);
                             resolve(false);
                         }.bind(this)
 
