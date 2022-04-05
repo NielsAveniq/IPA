@@ -26,7 +26,7 @@
                         <f:SimpleForm id="SimpleFormDisplayPerson354"
                             editable="true"
                             layout="ResponsiveGridLayout"
-                            title="{i18n>Customerdata}">
+                            title="{i18n>title}">
                             <f:content>
                                 <core:Title id="PersonTitle" text="{i18n>Person}"/>
                                 <Label id="lblFirstName" text="{i18n>FirstName}" required="true"/>
@@ -49,10 +49,10 @@
                                 </Select>
                             </f:content>
                         </f:SimpleForm>
-                                <Button id="editMail" text="{i18n>EditMail}" press="handleEditMailPress" width="10%"/>
-                                <Button id="saveMail" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSaveMailPress" width="10%"/>
-                                <Button id="editPhone" text="{i18n>EditPhone}" press="handleEditPhonePress" width="10%"/>
-                                <Button id="savePhone" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSavePhonePress" width="10%"/>  
+                                <Button id="editMail" text="{i18n>EditMail}" press="handleEditMailPress" width="15%"/>
+                                <Button id="saveMail" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSaveMailPress" width="15%"/>
+                                <Button id="editPhone" text="{i18n>EditPhone}" press="handleEditPhonePress" width="15%"/>
+                                <Button id="savePhone" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSavePhonePress" width="15%"/>  
 
                         <f:SimpleForm id="SimpleFormDisplayAddress354"
                             editable="false"
@@ -103,8 +103,8 @@
                                 </Select>
                             </f:content>
                         </f:SimpleForm>
-                                <Button id="editAddress" text="{i18n>EditAddress}" press="handleEditAddressPress" width="10%"/>
-                                <Button id="saveAddress" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSaveAddressPress" width="10%"/>
+                                <Button id="editAddress" text="{i18n>EditAddress}" press="handleEditAddressPress" width="15%"/>
+                                <Button id="saveAddress" text="{i18n>Save}" type="Emphasized" visible="false" press="handleSaveAddressPress" width="15%"/>
                     </VBox>
                 </Page>
             </pages>
