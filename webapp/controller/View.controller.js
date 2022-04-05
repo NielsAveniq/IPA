@@ -47,7 +47,8 @@ sap.ui.define([
                 });
             },
 
-            //First all edit buttons are disabled and then the save and cancel buttons are shown
+            //When bEdit=true all edit buttons are disabled and then the save and cancel buttons are shown
+            //When bEdit=false the save and canel buttons are disabled and the edit buttons are shown
             toggleButtonsMail : function (bEdit) {
                 var oView = this.getView();
                 oView.byId("editMail").setVisible(!bEdit);
@@ -57,7 +58,7 @@ sap.ui.define([
                 oView.byId("cancel").setVisible(bEdit);
             },
 
-            //Changes the mail and standard-Communicationchannel fields from not editable to editable
+            //Changes the mail and standard-Communicationchannel fields from "not editable" to "editable" and the other way around
             toggleFieldsMail : function (bEdit){
                 var oView = this.getView();
                 oView.byId("inputMail").setEditable(bEdit);
@@ -71,6 +72,7 @@ sap.ui.define([
                 this.toggleFieldsPhone(true);
             },
 
+            //Pressing save first gets the value and then updates the data
             handleSavePhonePress : function () {
                 var that = this;
                 
@@ -88,6 +90,8 @@ sap.ui.define([
                 });
             },
 
+            //When bEdit=true all phone buttons are disabled and then the save and cancel buttons are shown
+            //When bEdit=false the save and canel buttons are disabled and the edit buttons are shown
             toggleButtonsPhone : function (bEdit) {
                 var oView = this.getView();
                 oView.byId("editMail").setVisible(!bEdit);
@@ -97,18 +101,21 @@ sap.ui.define([
                 oView.byId("cancel").setVisible(bEdit);
             },
 
+            //Changes the phone and standard-Communicationchannel fields from "not editable" to "editable" and the other way around
             toggleFieldsPhone : function (bEdit){
                 var oView = this.getView();
                 oView.byId("inputPhone").setEditable(bEdit);
                 oView.byId("inputStdCommunication").setEditable(bEdit);
             },
 
-//Edit and Save button for the Address. And toggle of Address Buttons and Fields
+//Edit and save button for the address. And toggle of address buttons and fields
+            //Pressing the edit phone button calls these methods
             handleEditAddressPress : function () {
                 this.toggleButtonsAddress(true);
                 this.toggleFieldsAddress(true);
             },
 
+            //Pressing save first gets the value and then updates the data
             handleSaveAddressPress : function () {
                 var that = this;
 
@@ -138,6 +145,8 @@ sap.ui.define([
                 
             },
 
+            //When bEdit=true all phone buttons are disabled and then the save and cancel buttons are shown
+            //When bEdit=false the save and canel buttons are disabled and the edit buttons are shown
             toggleButtonsAddress : function (bEdit) {
                 var oView = this.getView();
                 oView.byId("editMail").setVisible(!bEdit);
@@ -147,6 +156,7 @@ sap.ui.define([
                 oView.byId("cancel").setVisible(bEdit);
             },
 
+            //Changes the phone and standard-Communicationchannel fields from "not editable" to "editable" and the other way around
             toggleFieldsAddress : function (bEdit){
                 var oView = this.getView();
                 oView.byId("inputCity").setEditable(bEdit);
@@ -158,6 +168,7 @@ sap.ui.define([
             },
 
 //Cancel button and toggle of buttons and fields when using the cancel button
+            //Cancel button shows a Messagebox. The user can either end the editing and lose all changes or keep on editing
             handleCancelPress : function () {
                 var that = this;
                 MessageBox.warning("Ihre Änderungen gehen verloren wollen Sie trotzdem weiterfahren?", {
@@ -172,10 +183,10 @@ sap.ui.define([
                     }
                 });
             },
+
+            //Toogles the Buttens when canceling the editing
             toggleButtons : function (bEdit) {
                 var oView = this.getView();
-    
-                // Show the appropriate action buttons
                 oView.byId("editMail").setVisible(!bEdit);
                 oView.byId("editPhone").setVisible(!bEdit);
                 oView.byId("editAddress").setVisible(!bEdit);
@@ -185,6 +196,7 @@ sap.ui.define([
                 oView.byId("cancel").setVisible(bEdit);
             },
 
+            //Toggles the fields when canceling the editing
             toggleFields : function (bEdit){
                 var oView = this.getView();
                 oView.byId("inputMail").setEditable(bEdit);
@@ -199,7 +211,9 @@ sap.ui.define([
             },
 
 
-//Vaildate the Input from the Mail Source:https://answers.sap.com/questions/11914737/email-validation-of-a-simple-form.html
+//Validate the Inputs in the Fields Mail and Phone
+
+            //Vaildate the Input from the Mail Source:https://answers.sap.com/questions/11914737/email-validation-of-a-simple-form.html
             validateMail : function() {
                 var email = this.getView().byId("inputMail").getValue();
                 var mailregex = /^\w+[\w-+\.]*\@\w+([-\.]\w+)*\.[a-zA-Z]{2,}$/;
@@ -209,7 +223,7 @@ sap.ui.define([
                 }
             },
 
-//Validate the Input from the Phonenumber Sorurce:https://www.w3resource.com/javascript/form/phone-no-validation.php
+            //Validate the Input from the Phonenumber Sorurce:https://www.w3resource.com/javascript/form/phone-no-validation.php
             validatePhone : function(){
                 var phoneno = this.getView().byId("inputPhone").getValue();
                 var phonenoregex = /^\d{10}$/;
@@ -217,15 +231,6 @@ sap.ui.define([
                     alert(phoneno + " is not a valid phonenumber");
                     this.getView().byId("inputPhone").setValueState(sap.ui.core.ValueState.Error);
                 }
-            },
-
-            /*validatePostalcode : function(){
-                var postalcode = this.getView().byId("inputPostalcode").getValue();
-                var postalcoderegex = /^\d{4}$/;
-                if(!postalcoderegex.test(postalcode)){
-                    alert(postalcode + " is not a valid postalcode");
-                    this.getView().byId("inputPostalcode").setValueState(sap.ui.core.ValueState.Error);
-                }
-            }*/
+            }
         });
     });
