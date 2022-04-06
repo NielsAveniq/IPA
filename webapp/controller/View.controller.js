@@ -1,11 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageBox"
+    "sap/m/MessageBox",
+    'sap/m/MessageToast'
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageBox) {
+    function (Controller, MessageBox, MessageToast) {
         "use strict";
 
         return Controller.extend("ipa.controller.View", {
@@ -69,11 +70,12 @@ sap.ui.define([
 
                     that.getView().getModel().update("/AccountAddressDependentEmails(AccountID='713',AddressID='26505',SequenceNo='001')", oNewMail, {
                         success: function (data) {
-                            alert(this.getView().getModel("i18n").getResourceBundle().getText("SaveSuccessMail"));
+                            MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("SaveSuccessMail"));
                             resolve(true);
                         }.bind(this),
                         error: function (oError) {
-                            //handled by ErrorHandler.js
+                            message = JSON.parse(oError.responseText).error.message.value;
+                            MessageBox.error(message);
                             resolve(false);
                         }.bind(this)
                     });
@@ -91,11 +93,12 @@ sap.ui.define([
 
                     that.getView().getModel().update("/AccountAddressDependentPhones(AccountID='713',AddressID='26505',SequenceNo='001')", oNewPhone, {
                         success: function (data) {
-                            alert(this.getView().getModel("i18n").getResourceBundle().getText("SaveSuccessPhone"));
+                            MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("SaveSuccessPhone"));
                             resolve(true);
                         }.bind(this),
                         error: function (oError) {
-                            //handled by ErrorHandler.js
+                            message = JSON.parse(oError.responseText).error.message.value;
+                            MessageBox.error(message);
                             resolve(false);
                         }.bind(this)
 
@@ -106,6 +109,7 @@ sap.ui.define([
             _saveAddress: function () {
                 return new Promise(function (resolve) {
                     var that = this;
+                    var message;
 
                     var oEntryAddress = {};
                     oEntryAddress.AddressInfo = {
@@ -121,11 +125,12 @@ sap.ui.define([
 
                     that.getView().getModel().update("/AccountAddresses(AccountID='713',AddressID='26505')", oEntryAddress, {
                         success: function (data) {
-                            alert(this.getView().getModel("i18n").getResourceBundle().getText("SaveSuccessAddress"));
+                            MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("SaveSuccessAddress"));
                             resolve(true);
                         }.bind(this),
                         error: function (oError) {
-                            alert();
+                            message = JSON.parse(oError.responseText).error.message.value;
+                            MessageBox.error(message);
                             resolve(false);
                         }.bind(this)
 
@@ -160,9 +165,7 @@ sap.ui.define([
             },
 
             /*
-            //
             //Validate the Inputs in the Fields Mail and Phone
-            //
             */
 
             //Vaildate the Input from the Mail Source:https://answers.sap.com/questions/11914737/email-validation-of-a-simple-form.html
@@ -170,7 +173,7 @@ sap.ui.define([
                 var email = this.getView().byId("inputMail").getValue();
                 var mailregex = /^\w+[\w-+\.]*\@\w+([-\.]\w+)*\.[a-zA-Z]{2,}$/;
                 if (!mailregex.test(email)) {
-                    alert(email + " is not a valid email address");
+                    alert(email + " " +this.getView().getModel("i18n").getResourceBundle().getText("ErrorMail"));
                     this.getView().byId("inputMail").setValueState(sap.ui.core.ValueState.Error);
                 }
             },
@@ -180,7 +183,7 @@ sap.ui.define([
                 var phoneno = this.getView().byId("inputPhone").getValue();
                 var phonenoregex = /^\d{10}$/;
                 if (!phonenoregex.test(phoneno)) {
-                    alert(phoneno + " is not a valid phonenumber");
+                    alert(phoneno + " " + this.getView().getModel("i18n").getResourceBundle().getText("ErrorPhone"));
                     this.getView().byId("inputPhone").setValueState(sap.ui.core.ValueState.Error);
                 }
             }
