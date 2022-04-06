@@ -9,7 +9,7 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("ipa.controller.View", {
-            onInit: function () { },
+            onInit: function () {},
 
             onAfterRendering: function () {
                 //Databinding to the view by getting the ID from the fields where the entitysets are needed
@@ -69,7 +69,7 @@ sap.ui.define([
 
                     that.getView().getModel().update("/AccountAddressDependentEmails(AccountID='713',AddressID='26505',SequenceNo='001')", oNewMail, {
                         success: function (data) {
-                            alert("success");
+                            alert(this.getView().getModel("i18n").getResourceBundle().getText("SaveSuccessMail"));
                             resolve(true);
                         }.bind(this),
                         error: function (oError) {
@@ -91,7 +91,7 @@ sap.ui.define([
 
                     that.getView().getModel().update("/AccountAddressDependentPhones(AccountID='713',AddressID='26505',SequenceNo='001')", oNewPhone, {
                         success: function (data) {
-                            alert("success");
+                            alert(this.getView().getModel("i18n").getResourceBundle().getText("SaveSuccessPhone"));
                             resolve(true);
                         }.bind(this),
                         error: function (oError) {
@@ -121,11 +121,11 @@ sap.ui.define([
 
                     that.getView().getModel().update("/AccountAddresses(AccountID='713',AddressID='26505')", oEntryAddress, {
                         success: function (data) {
-                            alert("success");
+                            alert(this.getView().getModel("i18n").getResourceBundle().getText("SaveSuccessAddress"));
                             resolve(true);
                         }.bind(this),
                         error: function (oError) {
-                                alert(message);
+                            alert();
                             resolve(false);
                         }.bind(this)
 
