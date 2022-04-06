@@ -40,7 +40,7 @@
                                 <Input id="inputMail" value="{Email}" placeholder="example@mail.com" editable="false" change="validateMail"/>
 
                                 <Label id="lblPhone" text="{i18n>Phone}"  required="true"/>
-                                <Input id="inputPhone" value="{PhoneNo}" placeholder="XXX XXX XX XX" editable="false" change="validatePhone"/>   
+                                <Input id="inputPhone" value="{PhoneNo}" placeholder="XXX XXX XX XX" editable="false" change="validatePhone"/>  
 
                                 <Label id="lblStdCommunication" text="{i18n>StdCommunication}" required="true"/>
                                 <Select id="inputStdCommunication" selectedKey="{CommunicationPreference}" editable="false">
