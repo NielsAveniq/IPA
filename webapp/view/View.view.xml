@@ -11,7 +11,6 @@
     xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
 >
-    <Shell id="shell">
         <App id="app">
             <pages>
                 <Page id="page" title="{i18n>title}">
@@ -105,5 +104,4 @@
                 </Page>
             </pages>
         </App>
-    </Shell>
 </mvc:View>
