@@ -40,7 +40,7 @@ sap.ui.define([
                 });
             },
 
-            //Edit Button calls toggleFields and toggleButtons and gives the parameter true
+            //Edit Button calls methods toggleFields and toggleButtons with the parameter true
             handleEditPress: function () {
                 this._toggleFields(true);
                 this._toggleButtons(true);
