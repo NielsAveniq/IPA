@@ -46,7 +46,7 @@ sap.ui.define([
                 this._toggleButtons(true);
             },
 
-            //Save Button calls the three methods to save the data and then the two toggle methods with the parameter false
+            //Save Button calls the three methods to save the data
             handleSavePress: async function (oEvent) {
                 await this._saveMail();
                 await this._savePhone();
@@ -163,9 +163,7 @@ sap.ui.define([
             */
 
             _saveError: function(oError){
-                var message;
-                message = JSON.parse(oError.responseText).error.message.value;
-                MessageBox.error(message);
+                MessageBox.error(JSON.parse(oError.responseText).error.message.value);
                 this._toggleButtons(true);
                 this._toggleFields(true);
             },
@@ -190,10 +188,10 @@ sap.ui.define([
                 }
             },
 
-            //Validate the Input from the Phonenumber Sorurce:https://www.w3resource.com/javascript/form/phone-no-validation.php
+            //Validate the Input from the Phonenumber Sorurce:https://www.codegrepper.com/code-examples/javascript/phone+number+regex+javascript
             validatePhone: function () {
                 var phoneno = this.getView().byId("inputPhone").getValue();
-                var phonenoregex = /^\d{10}$/;
+                var phonenoregex = /^[0-9]{10}$/;
                 if (!phonenoregex.test(phoneno)) {
                     MessageBox.error(phoneno + " " + this.getView().getModel("i18n").getResourceBundle().getText("ErrorPhone"));
                     this.getView().byId("inputPhone").setValueState(sap.ui.core.ValueState.Error);
