@@ -57,6 +57,7 @@ sap.ui.define([
             //Save Mail, Phone and Address
             */
 
+            //get Value by ID, update EntitySet with Value / when Success => _saveSuccess, when Error => _saveError
             _saveMail: function () {
                 return new Promise(function (resolve) {
                     var that = this;
@@ -79,6 +80,7 @@ sap.ui.define([
                 }.bind(this));
             },
 
+            //get Value by ID, update EntitySet with Value / when Success => _saveSuccess, when Error => _saveError
             _savePhone: function () {
                 return new Promise(function (resolve) {
                     var that = this;
@@ -102,6 +104,7 @@ sap.ui.define([
                 }.bind(this));
             },
 
+            //get Value by ID, update EntitySet with Value / when Success => _saveSuccess, when Error => _saveError
             _saveAddress: function () {
                 return new Promise(function (resolve) {
                     var that = this;
@@ -162,12 +165,14 @@ sap.ui.define([
             //Error and success when saving
             */
 
+            //with parameter get error message from the odata
             _saveError: function(oError){
                 MessageBox.error(JSON.parse(oError.responseText).error.message.value);
                 this._toggleButtons(true);
                 this._toggleFields(true);
             },
 
+            //with parameter get success message from i18n
             _saveSuccess: function(textShown){
                 MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText(textShown));
                 this._toggleButtons(false);
