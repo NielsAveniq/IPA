@@ -70,6 +70,7 @@ sap.ui.define([
                     that.getView().getModel().update("/AccountAddressDependentEmails(AccountID='713',AddressID='26505',SequenceNo='001')", oNewMail, {
                         success: function (data) {
                             that._saveSuccess("SaveSuccessMail");
+                            that.getView().byId("inputMail").setValueState(sap.ui.core.ValueState.None);
                             resolve(true);
                         }.bind(this),
                         error: function (oError) {
@@ -93,6 +94,7 @@ sap.ui.define([
                     that.getView().getModel().update("/AccountAddressDependentPhones(AccountID='713',AddressID='26505',SequenceNo='001')", oNewPhone, {
                         success: function (data) {
                             that._saveSuccess("SaveSuccessPhone");
+                            that.getView().byId("inputPhone").setValueState(sap.ui.core.ValueState.None);
                             resolve(true);
                         }.bind(this),
                         error: function (oError) {
